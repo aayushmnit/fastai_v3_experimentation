@@ -1,45 +1,29 @@
-# Deployment FastAI model using [Starlette](https://www.starlette.io/), [Docker](https://www.docker.com/) and  [Zeit](https://zeit.co/)
-This folder contains all the necessary code required to deploy our Plant disease detection model built in [this notebook](https://github.com/aayushmnit/fastai_v3_experimentation/blob/master/Lesson-1-PlantVintage.ipynb) using the [Now](https://zeit.co/now) service from [Zeit](https://zeit.co/). 
+# Deployment FastAI model using [Starlette](https://www.starlette.io/), [Docker](https://www.docker.com/) and  Google App Engine
+This folder contains all the necessary code required to deploy our Plant disease detection model built in [this notebook](https://github.com/aayushmnit/fastai_v3_experimentation/blob/master/Lesson-1-PlantVintage.ipynb) using Docker and  Google App Engine 
 
-## Deploying on Ziet
-Following instructions are taken from [FastAI deployment guide for Zeit](https://course-v3.fast.ai/deployment_zeit.html).
+## Deploying on Google App Engine
+Detailed instructions to setup your account first are described on [FastAI deployment guide for Gpogle App Engine](https://course-v3.fast.ai/deployment_google_app_engine.html).
 
-### One-time setup
-Install Now;s CLI(Command line interface)
-```bash
-sudo apt install npm # if not already installed
-sudo npm install -g now
-```
-
-### Deploy
-On the terminal, make sure you are in the zeit directory, then type:
-```bash
-now
-```
-The first time you run this, it will prompt for your email address and create your Now account for you. After your account is created, run it again to deploy your project.
-
-Every time you deploy with now it’ll create a unique deployment URL for the app. It has a format of xxx.now.sh, and is shown while you are deploying the app. When the deployment finishes and it shows ”> Success! Deployment ready” on the terminal, type in the terminal:
-```bash
-export NAME='changeme:this-is-your-name-for-the-url'
-now alias $NAME
-```
-This will alias the above mentioned deployment URL to $NAME.now.sh. You can do this everytime after you deployed. With that, you have a single URL for your app.
-
-### Scaling
-By default all deployment goes to sleep after some inactive time. This is not good for the latest version of your app. So do this:
+Once you have setted up your Google Cloud SDK. Just open Google cloud SDK, cd into deployment_platvintage directory and run the following command -
 
 ```bash
-# You only need to do this once.
-now scale $NAME.now.sh sfo 1
+gcloud app deploy
 ```
-
-### Test the URL of your working app
-Go to $NAME.now.sh in your browser and test your app.
 
 ## Local Testing 
 In case you want to run the app server locally, run the following command
 ```python
 python app/server.py serve
 ```
+You will be presented with a screen showing “Services to deploy”, enter Y.
+It will take 8~10 minutes for app engine to deploy your docker based app and provide you the app URL. 
 
-Go to http://localhost:5042/ to test your app locally.
+## Test the URL of your working app
+
+To see your final app open http://YOUR_PROJECT_ID.appspot.com or run the following command in browser shell to launch your app in the browser:
+
+```bash
+gcloud app browse
+```
+
+Go to http://localhost:8080/ to test your app locally.
