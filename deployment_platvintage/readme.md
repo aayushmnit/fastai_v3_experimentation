@@ -2,9 +2,9 @@
 This folder contains all the necessary code required to deploy our Plant disease detection model built in [this notebook](https://github.com/aayushmnit/fastai_v3_experimentation/blob/master/Lesson-1-PlantVintage.ipynb) using Docker and  Google App Engine 
 
 ## Deploying on Google App Engine
-Detailed instructions to setup your account first are described on [FastAI deployment guide for Gpogle App Engine](https://course-v3.fast.ai/deployment_google_app_engine.html).
+Detailed instructions to set up your account first are described on [FastAI deployment guide for Google App Engine](https://course-v3.fast.ai/deployment_google_app_engine.html).
 
-Once you have setted up your Google Cloud SDK. Just open Google cloud SDK, cd into deployment_platvintage directory and run the following command -
+Once you have set up your Google Cloud SDK. Just open Google cloud SDK, cd into the deployment_platvintage directory and run the following command -
 
 ```bash
 gcloud app deploy
